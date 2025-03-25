@@ -31,6 +31,5 @@ export class UserEntity {
     updatedAt: Date;
 
     @OneToMany(() => AddressEntity, (address) => address.user)
-    city?: AddressEntity[];
-    addresses: any;
+    addresses: AddressEntity[];
 }
