@@ -4,7 +4,6 @@ import { UserEntity } from './entities/user.entity';
 import * as bcrypt from 'bcrypt';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { NotFoundError } from 'rxjs';
 
 @Injectable()
 export class UserService {
@@ -55,4 +54,19 @@ export class UserService {
 
         return user;
     }
+
+    async findUserByEmail(email: string): Promise<UserEntity> {
+        const user = await this.userRepository.findOne({
+            where: {
+                email,
+            }
+        });
+
+        if (!user) {
+            throw new NotFoundException(`Email: ${email} Not Found`);
+        }
+
+        return user;
+    }
 }
+    
