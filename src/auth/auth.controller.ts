@@ -1,5 +1,4 @@
 import { Body, Controller, Injectable, Post, UsePipes, ValidationPipe } from '@nestjs/common';
-import { ReturnUserDto } from 'src/user/dtos/returnUser.dto';
 import { LonginDto } from './dtos/login.dto';
 import { AuthService } from './auth.service';
 import { ReturnLogin } from './dtos/returnLogin.dto';

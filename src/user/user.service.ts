@@ -18,7 +18,7 @@ export class UserService {
         if(user) {
             throw new BadGatewayException('email registered in system');
         }
-
+        
         const saltOrRounds = 10;
         const passwordHashed = await bcrypt.hash(createUserDto.password, saltOrRounds);
 
@@ -62,7 +62,7 @@ export class UserService {
     }
 
     async findUserByEmail(email: string): Promise<UserEntity> {
-        const user = await this.userRepository.findOne({
+        const user = await this.userRepository.findOne({    
             where: {
                 email,
             }
